@@ -67,7 +67,7 @@ Exploring existing projects that transform physical motion into digital art prov
 Daniel Rozin – Mechanical Mirrors
 
 ## Pseudocode below : 
-
+```
 // Arduino
 void loop() {
     readSensorData();
@@ -85,5 +85,4 @@ function draw() {
     getMotionData();
     generateVisualsBasedOnData();
 }
-
-    
+```
