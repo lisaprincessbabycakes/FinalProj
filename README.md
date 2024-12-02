@@ -86,8 +86,7 @@ function draw() {
     generateVisualsBasedOnData();
 }
 ```
-**Initial Functions:
-readSensorData() (Arduino): Reads motion sensor values.
-sendDataToSerial() (Arduino): Sends serialized data to p5.js.
-generateVisualsBasedOnData() (p5.js): Maps sensor values to visuals.
-**
+Initial Functions:
+1. readSensorData() (Arduino): Reads motion sensor values.
+2. sendDataToSerial() (Arduino): Sends serialized data to p5.js.
+3. generateVisualsBasedOnData() (p5.js): Maps sensor values to visuals.
