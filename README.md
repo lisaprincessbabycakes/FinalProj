@@ -33,4 +33,30 @@ Create a traffic light simulation that changes colors in sequence or in manual c
     * Animated cars or pedestrians reacting to the lights on p5.js.
 
     [![Untitled-Artwork-19.png](https://i.postimg.cc/BnkYtfVV/Untitled-Artwork-19.png)](https://postimg.cc/68VL1gwr)
+
+# Milestone 2 - project proposal, planning and organizing
+
+Based on the feedback from milestone 1, I've decided to pursue the crochet project idea. However, since detecting precise movements might be challenging, I'll simplify it so the needles can detect general movements and translate them into audio or visual patterns inspired by the crocheting motions. The Arduino will collect motion data from the crochet hook using sensors and then send the data to the computer through a serial connection, and P5.js will receive the motion data from Arduino to map motion data to generate dynamic visuals based on crochet movements. 
+
+
+##1. Circuit Diagram: The Arduino Nano is connected to a motion sensor (accelerator/gyroscope) and powered through a USB external power supply. The sensors are attached to the crochet hook to capture motion data.
+   [![Untitled-Artwork-24.png](https://i.postimg.cc/ncXcRJjW/Untitled-Artwork-24.png)](https://postimg.cc/ykzHx2Th)
+   
+##2. Libraries for Arduino:
+    * Adafruit_LSM6DSO (for accelerometer/gyroscope data).
+    * ArduinoJson (for efficient data serialization).
+* Libraries for p5.js:
+    * p5.serialport (to communicate with Arduino).
+    * p5.js built-in libraries for visuals (e.g., shapes, color, motion).
+
+##3. User Testing Plan
+* Target Audience:
+    * Artists and crafters interested in integrating technology into their creative processes.
+* Testing Approach:
+    * Recruit crocheters of varying skill levels.
+    * Provide them with the instrumented crochet hook and observe their interactions.
+    * Collect feedback on usability and the relevance of the visuals to their experience.
+
+
+
     
