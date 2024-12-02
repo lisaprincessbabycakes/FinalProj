@@ -38,6 +38,7 @@ Create a traffic light simulation that changes colors in sequence or in manual c
 
 Based on the feedback from milestone 1, I've decided to pursue the crochet project idea. However, since detecting precise movements might be challenging, I'll simplify it so the needles can detect general movements and translate them into audio or visual patterns inspired by the crocheting motions. The Arduino will collect motion data from the crochet hook using sensors and then send the data to the computer through a serial connection, and P5.js will receive the motion data from Arduino to map motion data to generate dynamic visuals based on crochet movements. 
 
+I'm going to be using the GY-521 MPU-6050 3 Axis Accelerometer Gyroscope Module (6-axis accelerometer) as the motion sensor 
 
 ## 1. Circuit Diagram: The Arduino Nano is connected to a motion sensor (accelerator/gyroscope) and powered through a USB external power supply. The sensors are attached to the crochet hook to capture motion data.
    [![Untitled-Artwork-24.png](https://i.postimg.cc/ncXcRJjW/Untitled-Artwork-24.png)](https://postimg.cc/ykzHx2Th)
@@ -58,6 +59,31 @@ Based on the feedback from milestone 1, I've decided to pursue the crochet proje
     * Provide them with the instrumented crochet hook and observe their interactions.
     * Collect feedback on usability and the relevance of the visuals to their experience.
 
+# References and inspo: 
 
+Exploring existing projects that transform physical motion into digital art provides valuable inspiration and context. One notable example is Daniel Rozin's "Mechanical Mirrors" series. These installations use physical objects, such as wooden tiles, metal pieces, or other materials, arranged into a grid. The pieces move in response to the viewer's presence or gestures, creating reflective, pixelated images. Rozin's work bridges the gap between analog motion and digital expression, highlighting the interplay between physical interaction and artistic representation. It serves as a compelling example of how movement can be transformed into dynamic, visually striking digital art. If you ever been to the ITP 4th floor of this building, you would see the same work. 
+
+
+Daniel Rozin – Mechanical Mirrors
+
+## Pseudocode below : 
+
+// Arduino
+void loop() {
+    readSensorData();
+    sendDataToSerial();
+}
+
+// p5.js
+function setup() {
+    createCanvas(windowWidth, windowHeight);
+    initializeSerialCommunication();
+}
+
+function draw() {
+    clear();
+    getMotionData();
+    generateVisualsBasedOnData();
+}
 
     
