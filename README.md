@@ -92,5 +92,10 @@ Initial Functions:
 3. generateVisualsBasedOnData() (p5.js): Maps sensor values to visuals.
 
 
-How the code works: The Arduino reads accelerometer (ax, ay, az) and gyroscope (gx, gy, gz) data and sends this data as a comma-separated string via the serial port.
+How the code works: The Arduino reads accelerometer (ax, ay, az) and gyroscope (gx, gy, gz) data and sends this data as a comma separated string via the serial port.
 p5.js receives the data string via p5.serialport, splits the string into individual sensor values, and maps these values to visual elements (e.g., position, size).
+
+
+Next Steps...... Set up the physical interaction with crochet hook and arduino 
+Test the serial communication: Use the Arduino Serial Monitor to verify sensor data output and then use serial.print debugging in p5.js to ensure data is received correctly.
+To Enhance visuals, I will experiment with color changes, particle systems, waveform effects, and map gyroscope data to rotational elements for more dynamic visuals.
