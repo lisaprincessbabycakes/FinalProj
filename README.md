@@ -90,3 +90,7 @@ Initial Functions:
 1. readSensorData() (Arduino): Reads motion sensor values.
 2. sendDataToSerial() (Arduino): Sends serialized data to p5.js.
 3. generateVisualsBasedOnData() (p5.js): Maps sensor values to visuals.
+
+
+How the code works: The Arduino reads accelerometer (ax, ay, az) and gyroscope (gx, gy, gz) data and sends this data as a comma-separated string via the serial port.
+p5.js receives the data string via p5.serialport, splits the string into individual sensor values, and maps these values to visual elements (e.g., position, size).
