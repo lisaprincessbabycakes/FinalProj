@@ -96,28 +96,37 @@ How the code works: The Arduino reads accelerometer (ax, ay, az) and gyroscope (
 p5.js receives the data string via p5.serialport, splits the string into individual sensor values, and maps these values to visual elements (e.g., position, size).
 
 
-Next Steps...... Set up the physical interaction with crochet hook and arduino 
-Test the serial communication: Use the Arduino Serial Monitor to verify sensor data output and then use serial.print debugging in p5.js to ensure data is received correctly.
-To Enhance visuals, I will experiment with color changes, particle systems, waveform effects, and map gyroscope data to rotational elements for more dynamic visuals.
+Next Steps...... Set up the physical interaction with a crochet hook and Arduino 
+Test the serial communication: Use the Arduino Serial Monitor to verify sensor data output and then use serial. print debugging in p5.js to ensure data is received correctly.
+To Enhance visuals, I will experiment with color changes, particle systems, and waveform effects and map gyroscope data to rotational elements for more dynamic visuals.
 
 
 # Milestone #3 
 
-I brought the MPU6050 sensor, which combines an accelerometer and gyroscope. However, I have an issue connecting it to the Arduino for motion data acquisition and serial communication. Ideally, I would want the sensor to be attached to the crochet hook, reading the crochet hook's motion and relation in real time and sending data to p5.js to create visuals based on sensor data. 
+I brought the MPU6050 sensor, which combines an accelerometer and gyroscope. However, I have an issue connecting it to the Arduino for motion data acquisition and serial communication. Ideally, I would want the sensor to be attached to the crochet hook, reading the crochet hook's motion and relation in real-time and sending data to p5.js to create visuals based on sensor data. 
 
 [![Screenshot-2024-12-09-at-1-04-09-PM.png](https://i.postimg.cc/QtKLNtz7/Screenshot-2024-12-09-at-1-04-09-PM.png)](https://postimg.cc/YG7DbpM2)
 
 I will be using external libraries p5.webserial.js for serial communication in p5.js and Sensor libraries (e.g., the MPU6050 library for Arduino).
 
 
-Because the MPU6050 chip wasn’t working, I watched a tutorial that mentioned that the board has a built-in chip (LSM9DS1) - Its got three sensors (x.y.z) - accelerometer, gyroscope, and magnetometer and I had to download the library (LSM9DS1):
+Because the MPU6050 chip wasn’t working, I watched a tutorial that mentioned that the board has a built-in chip (LSM9DS1) - It got three sensors (x.y.z) - accelerometer, gyroscope, and magnetometer and I had to download the library (LSM9DS1):
 
 https://youtu.be/WJkn9ZmS9Gs?si=Gm0ggqQVrI1T9jRY
 
 But unfortunately, I was also struggling with getting the code to work with the board.  
 [![Screenshot-2024-12-08-at-10-19-43-PM.png](https://i.postimg.cc/PqRskZSh/Screenshot-2024-12-08-at-10-19-43-PM.png)](https://postimg.cc/Y4Yy64cy)
 
+[![IMG-2310.avif](https://i.postimg.cc/FKTY0PDv/IMG-2310.avif)](https://postimg.cc/xkbj23wp)
+
+Thankfully, Professor Thiago helped me solder the chip correctly. I learned that the solder should be little dots that do not touch the other pins, otherwise the wiring would not work. 
+
 As for the moment, I might as well start with the coding for the p5.js visuals and how I envision how it would look like. 
+
+For the visual concept, I would like to visualize the motion as “threads” waving on the screen, resembling the yarn flow. For the data mapping, I will use the accelerator values to console the wave’s amplitude and frequency. Gyroscope data will add noise or variation to the waves. These sine waves will have varying colors and thicknesses. 
+
+
+
 
 
 
