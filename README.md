@@ -126,8 +126,94 @@ As for the moment, I might as well start with the coding for the p5.js visuals a
 For the visual concept, I would like to visualize the motion as “threads” waving on the screen, resembling the yarn flow. For the data mapping, I will use the accelerator values to console the wave’s amplitude and frequency. Gyroscope data will add noise or variation to the waves. These sine waves will have varying colors and thicknesses. 
 
 
+# Milestone 4
+how the motion sensor data (accelerometer, gyroscope, number of stitches, etc.) is mapped to the visual features in the JS code:
 
+---
+### **1. Shapes and Positions**
+#### **Corresponds to: Accelerometer Data**
+- **`acceleration.x` and `acceleration.y`**: 
+  - These values are mapped to the **position** of shapes (`x` and `y` coordinates). The accelerometer measures tilt or motion along these axes, and the values are scaled to span the canvas, making shapes appear in different areas depending on how the sensor moves.
+  - Example: Tilting the sensor to the left will shift shapes towards the left side of the canvas.
+- **Random offsets** (`random(-50, 50)`):
+  - Added to ensure that shapes appear more spread out and don't overlap excessively, even with subtle movements.
 
+---
+
+### **2. Shape Sizes**
+#### **Corresponds to: Accelerometer Magnitude (Motion Intensity)**
+- **`motionFactor` (sum of `abs(acceleration.x) + abs(acceleration.y) + abs(acceleration.z)`)**:
+  - The magnitude of the acceleration is used to adjust the **size** of the shapes.
+  - More vigorous motion (e.g., shaking the sensor) creates larger shapes, while slow, steady movements result in smaller ones.
+  - Formula: `size = 10 + motionFactor * random(5, 15)`.
+
+---
+
+### **3. Shape Rotation**
+#### **Corresponds to: Gyroscope Data**
+- **`gyro.z` (rotation around the Z-axis):**
+  - The gyroscope tracks angular velocity. This value is used to calculate the **rotation angle** of each shape (`spinAngle`).
+  - Rapid rotations of the sensor (e.g., twisting or spinning) result in faster spinning or rotating shapes on the canvas.
+  - Formula: `spinAngle = frameCount * 0.01 + spiral.angleOffset`.
+
+---
+
+### **4. Shape Colors**
+#### **Corresponds to: Randomized but Persistent Features**
+- **Hue Values (Color Variance):**
+  - Colors of the shapes are randomized (`outerHue` and `innerHue`) but remain persistent for each shape until it fades out. This doesn't directly relate to sensor data but provides aesthetic variation.
+
+---
+
+### **5. Shape Fade-Out Effect**
+#### **Corresponds to: Time**
+- **`spiral.opacity`:**
+  - Shapes fade out gradually by reducing their opacity over time (`spiral.opacity -= 0.5`). This ensures the canvas doesn't become cluttered with persistent shapes, creating a dynamic visual environment.
+
+---
+
+### **6. Number of Stitches**
+#### **Corresponds to: Gyroscope Rotational Accumulation**
+- **`stitchCount`:**
+  - The code increments the stitch counter whenever the cumulative gyroscope Z-axis rotation exceeds a threshold (320 degrees in this case). 
+  - For every new stitch, the following happens:
+    - **A stitch sound effect** plays (`stitchSound.play()`).
+    - **A new group of shapes** is added, creating a visual event tied to the physical crochet action.
+
+---
+
+### **7. Shape Spread**
+#### **Corresponds to: Combination of Accelerometer and Random Factors**
+- The spread of shapes is influenced by:
+  - **`motionFactor`** (based on acceleration magnitude): Determines the overall spread radius.
+  - **`random(-50, 50)` offsets**: Adds variation for a more natural, scattered appearance.
+
+---
+
+### Summary of Mappings
+| **Visual Feature**            | **Motion Sensor Data**                                    |
+|-------------------------------|----------------------------------------------------------|
+| **Shape Positions (x, y)**    | `acceleration.x` and `acceleration.y`                    |
+| **Shape Sizes**               | `motionFactor` (acceleration magnitude)                  |
+| **Shape Rotation**            | `gyro.z` (angular velocity)                              |
+| **Shape Colors**              | Randomized for variety                                   |
+| **Shape Fade-Out Effect**     | Time-based (independent of sensor data)                  |
+| **Stitch Events**             | Cumulative `gyro.z` rotation triggers new shapes & sound |
+| **Shape Spread**              | `motionFactor` (acceleration) + Random offsets          |
+
+---
+
+### Example Scenario:
+1. **You tilt the sensor to the right**:
+   - Shapes appear on the right side of the canvas (from `acceleration.x`).
+2. **You shake the sensor quickly**:
+   - Larger shapes appear, distributed more widely (from higher `motionFactor`).
+3. **You twist the sensor**:
+   - Shapes rotate dynamically on the canvas (from `gyro.z`).
+4. **You make a stitch**:
+   - A stitch sound plays, and a new cluster of shapes is generated, marking the event.
+
+Let me know if you'd like more customization or further clarifications! 😊
 
 
 
