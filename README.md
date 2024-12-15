@@ -194,7 +194,7 @@ After consulting with Professor Thiago, the motion sensor was successfully broug
 - The spread of shapes is influenced by:
   - **`motionFactor`** (based on acceleration magnitude): Determines the overall spread radius.
   - **`random(-50, 50)` offsets**: Adds variation for a more natural, scattered appearance.
-
+[![Screenshot-2024-12-15-at-10-23-13-AM.png](https://i.postimg.cc/BbFVVryB/Screenshot-2024-12-15-at-10-23-13-AM.png)](https://postimg.cc/hQSsJ5KX)
 ---
 
 ### Summary of Mappings
