@@ -127,8 +127,15 @@ For the visual concept, I would like to visualize the motion as “threads” wa
 
 
 # Milestone 4
-how the motion sensor data (accelerometer, gyroscope, number of stitches, etc.) is mapped to the visual features in the JS code:
 
+[![IMG-2639.avif](https://i.postimg.cc/SxSd9qJB/IMG-2639.avif)](https://postimg.cc/fJPY4G7C)
+
+After consulting with Professor Thiago, the motion sensor was successfully brought into working condition. The issue was traced back to the original pins, A3 and A4, on the Arduino board, which were found to be non-functional. A minor adjustment was made to the code to resolve this, redirecting the sensor connections to alternative pins D3 and D4. This change allowed the motion sensor to communicate effectively with the Arduino, restoring its functionality. Professor Thiago's guidance was instrumental in quickly identifying and resolving the problem, ensuring the sensor integration was both seamless and efficient.
+
+[![IMG-2640.avif](https://i.postimg.cc/qvW9xzyt/IMG-2640.avif)](https://postimg.cc/87BK1kyD)
+
+**How the motion sensor data (accelerometer, gyroscope, number of stitches, etc.) is mapped to the visual features in the JS code:
+**
 ---
 ### **1. Shapes and Positions**
 #### **Corresponds to: Accelerometer Data**
@@ -152,7 +159,7 @@ how the motion sensor data (accelerometer, gyroscope, number of stitches, etc.) 
 ### **3. Shape Rotation**
 #### **Corresponds to: Gyroscope Data**
 - **`gyro.z` (rotation around the Z-axis):**
-  - The gyroscope tracks angular velocity. This value is used to calculate the **rotation angle** of each shape (`spinAngle`).
+  - The gyroscope tracks angular velocity. This value calculates the **rotation angle** of each shape (`spinAngle`).
   - Rapid rotations of the sensor (e.g., twisting or spinning) result in faster spinning or rotating shapes on the canvas.
   - Formula: `spinAngle = frameCount * 0.01 + spiral.angleOffset`.
 
@@ -168,7 +175,7 @@ how the motion sensor data (accelerometer, gyroscope, number of stitches, etc.) 
 ### **5. Shape Fade-Out Effect**
 #### **Corresponds to: Time**
 - **`spiral.opacity`:**
-  - Shapes fade out gradually by reducing their opacity over time (`spiral.opacity -= 0.5`). This ensures the canvas doesn't become cluttered with persistent shapes, creating a dynamic visual environment.
+  - Shapes fade out gradually by reducing their opacity over time (`spiral.opacity -= 0.5`). This ensures the canvas isn't cluttered with persistent shapes, creating a dynamic visual environment.
 
 ---
 
@@ -213,7 +220,7 @@ how the motion sensor data (accelerometer, gyroscope, number of stitches, etc.) 
 4. **You make a stitch**:
    - A stitch sound plays, and a new cluster of shapes is generated, marking the event.
 
-Let me know if you'd like more customization or further clarifications! 😊
+
 
 
 
